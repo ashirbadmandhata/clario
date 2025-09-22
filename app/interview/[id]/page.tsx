@@ -550,67 +550,73 @@ export default function InterviewPage() {
       </Card>
 
       {/* Navigation */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
-        <Button
-          variant="outline"
-          onClick={() => {
-            const prevIndex = Math.max(0, currentQuestionIndex - 1)
-            setCurrentQuestionIndex(prevIndex)
-            const prevQuestionId = questions[prevIndex]?.id
-            if (prevQuestionId && responses[prevQuestionId]) {
-              setCurrentResponse(responses[prevQuestionId])
-            } else {
-              setCurrentResponse("")
-            }
-          }}
-          disabled={currentQuestionIndex === 0}
-          className="bg-transparent"
-        >
-          Previous
-        </Button>
+<div className="flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
+  {/* Left: Previous button */}
+  <div className="w-full sm:w-auto">
+    <Button
+      variant="outline"
+      onClick={() => {
+        const prevIndex = Math.max(0, currentQuestionIndex - 1)
+        setCurrentQuestionIndex(prevIndex)
+        const prevQuestionId = questions[prevIndex]?.id
+        if (prevQuestionId && responses[prevQuestionId]) {
+          setCurrentResponse(responses[prevQuestionId])
+        } else {
+          setCurrentResponse("")
+        }
+      }}
+      disabled={currentQuestionIndex === 0}
+      className="w-full sm:w-auto bg-transparent"
+    >
+      Previous
+    </Button>
+  </div>
 
-        <div className="flex gap-2">
-          <Button
-            onClick={submitInterview}
-            disabled={isSubmitting}
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              "Submit Interview"
-            )}
-          </Button>
+  {/* Right: Submit / Go Back / Next */}
+  <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+    <Button
+      onClick={submitInterview}
+      disabled={isSubmitting}
+      className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+    >
+      {isSubmitting ? (
+        <>
+          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+          Submitting...
+        </>
+      ) : (
+        "Submit Interview"
+      )}
+    </Button>
 
-          <Button
-          variant="outline"
-          onClick={() => router.push("/dashboard/interviews")}
-          className="bg-muted hover:bg-muted/80"
-        >
-          Go Back
-        </Button>
+    <Button
+      variant="outline"
+      onClick={() => router.push("/dashboard/interviews")}
+      className="w-full sm:w-auto bg-muted hover:bg-muted/80"
+    >
+      Go Back
+    </Button>
 
-          <Button
-            onClick={nextQuestion}
-            disabled={!currentResponse.trim() || isSubmitting}
-            className="bg-primary hover:bg-primary/90"
-          >
-            {currentQuestionIndex === questions.length - 1 ? (
-              <>
-                <CheckCircle className="h-4 w-4 mr-2" />
-                Complete Interview
-              </>
-            ) : (
-              <>
-                Next Question
-                <SkipForward className="h-4 w-4 ml-2" />
-              </>
-            )}
-          </Button>
-        </div>
+    <Button
+      onClick={nextQuestion}
+      disabled={!currentResponse.trim() || isSubmitting}
+      className="w-full sm:w-auto bg-primary hover:bg-primary/90"
+    >
+      {currentQuestionIndex === questions.length - 1 ? (
+        <>
+          <CheckCircle className="h-4 w-4 mr-2" />
+          Complete Interview
+        </>
+      ) : (
+        <>
+          Next Question
+          <SkipForward className="h-4 w-4 ml-2" />
+        </>
+      )}
+    </Button>
+  </div>
+</div>
+
       </div>
     </div>
   )
