@@ -23,8 +23,8 @@ export default function SplashScreen() {
     >
       {/* Glowing Brain Icon */}
       <motion.div
-        initial={{ scale: 0, rotate: -180 }}
-        animate={{ scale: 1, rotate: 0 }}
+        initial={{ scale: 0, rotate: -180, opacity: 0 }}
+        animate={{ scale: 1, rotate: 0, opacity: 1 }}
         transition={{ duration: 1, type: "spring" }}
         className="relative"
       >
@@ -32,25 +32,32 @@ export default function SplashScreen() {
         <span className="absolute inset-0 animate-ping rounded-full bg-primary/30" />
       </motion.div>
 
-      {/* Typing Effect for CLARIO */}
+      {/* CLARIO (appears after Brain) */}
       <motion.h1
         className="mt-6 text-4xl font-extrabold tracking-widest"
-        initial={{ width: 0 }}
-        animate={{ width: "100%" }}
-        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-        style={{ overflow: "hidden", whiteSpace: "nowrap", borderRight: "3px solid #ea580c" }}
+        initial={{ opacity: 0, y: 20, width: 0 }}
+        animate={{ opacity: 1, y: 0, width: "100%" }}
+        transition={{ duration: 1.2, ease: "easeInOut", delay: 1 }}
+        style={{
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          borderRight: "3px solid #ea580c",
+        }}
       >
         CLARIO
       </motion.h1>
 
-      {/* Footer */}
+      {/* Credits (appear last) */}
       <motion.p
-        className="absolute bottom-8 text-sm text-muted-foreground"
+        className="mt-4 text-sm text-muted-foreground"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
+        transition={{ delay: 2, duration: 0.6 }}
       >
-        🚀 Developed by <span className="text-primary font-semibold">Ananya , Jyoti, Biswajit, Romiya</span>
+        🚀 Developed by{" "}
+        <span className="text-primary font-semibold">
+          Ananya, Jyoti, Biswajit, Romiya
+        </span>
       </motion.p>
     </motion.div>
   )
