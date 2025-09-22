@@ -47,7 +47,7 @@ export default function LoginPage() {
             <div className="p-2 bg-primary rounded-lg">
               <Brain className="h-6 w-6 text-primary-foreground" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground">AI Interview Pro</h1>
+            <h1 className="text-2xl font-bold text-foreground">CLARIO</h1>
           </div>
           <p className="text-muted-foreground">Master your next interview with AI</p>
         </div>

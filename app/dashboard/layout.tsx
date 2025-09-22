@@ -57,6 +57,11 @@ const menuItems = [
     icon: FileText,
   },
   {
+    title: "Profile",
+    url: "/dashboard/profile",
+    icon: User,
+  },
+  {
     title: "Settings",
     url: "/dashboard/settings",
     icon: Settings,
