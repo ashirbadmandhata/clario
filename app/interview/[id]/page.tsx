@@ -618,6 +618,5 @@ export default function InterviewPage() {
 </div>
 
       </div>
-    </div>
   )
 }
